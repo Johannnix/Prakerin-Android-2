@@ -30,7 +30,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
 public class MainActivity extends AppCompatActivity {
-    private String[] Item = {"Pie Chart","Bar Chart","Line Chart"};
+    private String[] Item = {"Choose Chart","Pie Chart","Bar Chart","Line Chart"};
     LineChart lineChart;
 
     @Override
@@ -54,17 +54,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView adapterView, View view, int i, long l) {
                 String selectedItem = adapterView.getItemAtPosition(i).toString();
-                if(selectedItem.equals("Pie Chart")) {
+                if (selectedItem.equals("Choose Chart")){
+                    a.setVisibility(View.GONE);
+                    b.setVisibility(View.GONE);
+                    c.setVisibility(View.GONE);
+                } else if(selectedItem.equals("Pie Chart")) {
                     a.setVisibility(View.VISIBLE);
                     b.setVisibility(View.GONE);
                     c.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Saya Memilih "+adapter.getItem(i), Toast.LENGTH_SHORT).show();
-                }else if (selectedItem.equals("Bar Chart")){
+                } else if (selectedItem.equals("Bar Chart")){
                     a.setVisibility(View.GONE);
                     b.setVisibility(View.VISIBLE);
                     c.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Saya Memilih "+adapter.getItem(i), Toast.LENGTH_SHORT).show();
-                }else if (selectedItem.equals("Line Chart")){
+                } else if (selectedItem.equals("Line Chart")){
                     a.setVisibility(View.GONE);
                     b.setVisibility(View.GONE);
                     c.setVisibility(View.VISIBLE);
