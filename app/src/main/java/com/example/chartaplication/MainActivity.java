@@ -7,10 +7,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarData;
@@ -29,7 +37,12 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
+    private TextView txtShowTextResult;
     private String[] Item = {"Choose Chart","Pie Chart","Bar Chart","Line Chart"};
     LineChart lineChart;
 
@@ -37,6 +50,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txtShowTextResult = findViewById(R.id.piechart);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final String url = "https://api.kawalcorona.com/indonesia/";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    StringBuilder formattedResult = new StringBuilder();
+                    JSONArray responseJSONArray = response.getJSONArray("");
+                    for (int i = 0; i < responseJSONArray.length(); i++) {
+                        formattedResult.append("\n" + responseJSONArray.getJSONObject(i).get("name") + "=> \t" + responseJSONArray.getJSONObject(i).get("rating"));
+                    }
+                    txtShowTextResult.setText("List of Restaurants \n" + " Name" + "\t Rating \n" + formattedResult);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtShowTextResult.setText("An Error occured while making the request");
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
         View a = findViewById(R.id.piechart);
         View b = findViewById(R.id.barchart);
         View c = findViewById(R.id.linechart);
