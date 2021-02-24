@@ -1,11 +1,11 @@
 package com.example.chartaplication.Model;
 
 public class ModelDataIndonesia {
-    private String name;
-    private String positif;
-    private String sembuh;
-    private String meninggal;
-    private String dirawat;
+    public String name;
+    public String positif;
+    public String sembuh;
+    public String meninggal;
+    public String dirawat;
 
     public String getName() {
         return name;
