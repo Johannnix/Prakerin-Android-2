@@ -3,10 +3,6 @@ package com.example.chartaplication;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +14,6 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,14 +55,20 @@ public class MainActivity extends AppCompatActivity {
                 tSembuh.setText(response.body().get(0).getSembuh());
                 tMati.setText(response.body().get(0).getMeninggal());
                 tRawat.setText(response.body().get(0).getDirawat());
+
+                String data_positif = response.body().get(0).getPositif();
+                String data_sembuh = response.body().get(0).getSembuh();
+                String data_meninggal = response.body().get(0).getMeninggal();
+                String data_dirawat = response.body().get(0).getDirawat();
+
                 dialog.cancel();
 //                BarChart chart = findViewById(R.id.barchart);
 //
-                ArrayList Pembeli = new ArrayList();
-                Pembeli.add(new BarEntry(0, response.body().get(0).getPositif()));
-                Pembeli.add(new BarEntry(1, response.body().get(0).getPositif()));
-                Pembeli.add(new BarEntry(2, response.body().get(0).getPositif()));
-                Pembeli.add(new BarEntry(3, response.body().get(0).getPositif()));
+//                ArrayList Pembeli = new ArrayList();
+//                Pembeli.add(new BarEntry(0, Float.parseFloat(data_positif)));
+//                Pembeli.add(new BarEntry(1, Float.parseFloat(data_sembuh)));
+//                Pembeli.add(new BarEntry(2, Float.parseFloat(data_meninggal)));
+//                Pembeli.add(new BarEntry(3, Float.parseFloat(data_dirawat)));
 //                BarDataSet bardataset = new BarDataSet(Pembeli, "");
 //                bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
 //                bardataset.setValueTextColor(Color.BLACK);
@@ -81,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
 //                PieChart pieChart = findViewById(R.id.piechart);
 //                ArrayList Produser = new ArrayList<>();
-//                Produser.add(new Entry(response.body().get(0).getPositif(), 0));
-//                Produser.add(new Entry(response.body().get(0).getSembuh(), 1));
-//                Produser.add(new Entry(response.body().get(0).getMeninggal(), 2));
-//                Produser.add(new Entry(response.body().get(0).getDirawat(), 3));
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
 //
 //                PieDataSet pieDataSet = new PieDataSet(Produser, "");
 //                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
