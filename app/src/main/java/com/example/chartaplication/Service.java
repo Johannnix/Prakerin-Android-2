@@ -8,6 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface Service {
-    @GET("indonesia")
+    @GET("id")
     Call<List<ModelDataIndonesia>> getData();
 }

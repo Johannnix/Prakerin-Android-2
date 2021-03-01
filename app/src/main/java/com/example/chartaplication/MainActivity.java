@@ -30,36 +30,35 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private String[] Item = {"Choose Chart","Pie Chart","Bar Chart","Line Chart"};
     LineChart lineChart;
-    TextView tName,tPositif,tSembuh,tMati,tRawat;
+    TextView tPositif,tSembuh,tMati;
     ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tName = findViewById(R.id.txtName);
+
         tPositif = findViewById(R.id.txtPositif);
         tSembuh = findViewById(R.id.txtSembuh);
         tMati = findViewById(R.id.txtMati);
-        tRawat = findViewById(R.id.txtRawat);
+
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
         dialog.setCancelable(false);;
         dialog.show();
+
         Call<List<ModelDataIndonesia>> call = Api.service().getData();
         call.enqueue(new Callback<List<ModelDataIndonesia>>() {
             @Override
             public void onResponse(Call<List<ModelDataIndonesia>> call, Response<List<ModelDataIndonesia>> response) {
-                tName.setText(response.body().get(0).getName());
-                tPositif.setText(response.body().get(0).getPositif());
-                tSembuh.setText(response.body().get(0).getSembuh());
-                tMati.setText(response.body().get(0).getMeninggal());
-                tRawat.setText(response.body().get(0).getDirawat());
+                tPositif.setText(response.body().get(0).getConfirmed());
+                tSembuh.setText(response.body().get(0).getRecovered());
+                tMati.setText(response.body().get(0).getDeaths());
 
-                String data_positif = response.body().get(0).getPositif();
-                String data_sembuh = response.body().get(0).getSembuh();
-                String data_meninggal = response.body().get(0).getMeninggal();
-                String data_dirawat = response.body().get(0).getDirawat();
+//                String data_positif = response.body().get(0).getPositif();
+//                String data_sembuh = response.body().get(0).getSembuh();
+//                String data_meninggal = response.body().get(0).getMeninggal();
+//                String data_dirawat = response.body().get(0).getDirawat();
 
                 dialog.cancel();
 //                BarChart chart = findViewById(R.id.barchart);
@@ -141,6 +140,84 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
+    }
+}
+//                String data_positif = response.body().get(0).getPositif();
+//                String data_sembuh = response.body().get(0).getSembuh();
+//                String data_meninggal = response.body().get(0).getMeninggal();
+//                String data_dirawat = response.body().get(0).getDirawat();
+
+//                BarChart chart = findViewById(R.id.barchart);
+//
+//                ArrayList Pembeli = new ArrayList();
+//                Pembeli.add(new BarEntry(0, Float.parseFloat(data_positif)));
+//                Pembeli.add(new BarEntry(1, Float.parseFloat(data_sembuh)));
+//                Pembeli.add(new BarEntry(2, Float.parseFloat(data_meninggal)));
+//                Pembeli.add(new BarEntry(3, Float.parseFloat(data_dirawat)));
+//                BarDataSet bardataset = new BarDataSet(Pembeli, "");
+//                bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+//                bardataset.setValueTextColor(Color.BLACK);
+//                bardataset.setValueTextSize(14f);
+//
+//                BarData barData = new BarData(bardataset);
+//                chart.setData(barData);
+//                chart.animateY(2000);
+
+//                PieChart pieChart = findViewById(R.id.piechart);
+//                ArrayList Produser = new ArrayList<>();
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
+//                Produser.add(new Entry());
+//
+//                PieDataSet pieDataSet = new PieDataSet(Produser, "");
+//                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//                pieDataSet.setValueTextColor(Color.BLACK);
+//                pieDataSet.setValueTextSize(14f);
+//
+//                PieData pieData = new PieData(pieDataSet);
+//                pieChart.setData(pieData);
+//                pieChart.getDescription().setEnabled(false);
+//                pieChart.setCenterText("");
+//                pieChart.animate();
+
+//                lineChart = findViewById(R.id.linechart);
+//                LineDataSet lineDataSet = new LineDataSet(lineChartDataSet(),"");
+//                ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+//                iLineDataSets.add(lineDataSet);
+//
+//                LineData lineData = new LineData(iLineDataSets);
+//                lineChart.setData(lineData);
+//                lineChart.invalidate();
+//
+//
+//                //if you want set background color use below method
+//                //lineChart.setBackgroundColor(Color.RED);
+//
+//                // set text if data are are not available
+//                lineChart.setNoDataText("Data not Available");
+//
+//                //you can modify your line chart graph according to your requirement there are lots of method available in this library
+//
+//                //now customize line chart
+//
+//                lineDataSet.setColor(Color.CYAN);
+//                lineDataSet.setCircleColor(Color.MAGENTA);
+//                lineDataSet.setDrawCircles(true);
+//                lineDataSet.setDrawCircleHole(true);
+//                lineDataSet.setLineWidth(5);
+//                lineDataSet.setCircleRadius(10);
+//                lineDataSet.setCircleHoleRadius(10);
+//                lineDataSet.setValueTextSize(10);
+//                lineDataSet.setValueTextColor(Color.BLACK);
+//            }
+//            private ArrayList<Entry> lineChartDataSet(){
+//                ArrayList<Entry> dataSet = new ArrayList<Entry>();
+//                dataSet.add(new Entry(0,ModelDataIndonesia.getPositif()));
+//                dataSet.add(new Entry(1,ModelDataIndonesia.getSembuh()));
+//                dataSet.add(new Entry(2,ModelDataIndonesia.getMeninggal()));
+//                dataSet.add(new Entry(3,ModelDataIndonesia.getDirawat()));
+//                return  dataSet;
 
 //        View a = findViewById(R.id.piechart);
 //        View b = findViewById(R.id.barchart);
@@ -186,5 +263,3 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
-    }
-}

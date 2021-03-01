@@ -1,29 +1,19 @@
 package com.example.chartaplication.Model;
 
 public class ModelDataIndonesia {
-    public String name;
-    public String positif;
-    public String sembuh;
-    public String meninggal;
-    public String dirawat;
+    public String confirmed;
+    public String recovered;
+    public String deaths;
 
-    public String getName() {
-        return name;
+    public String getConfirmed() {
+        return confirmed;
     }
 
-    public String getPositif() {
-        return positif;
+    public String getRecovered() {
+        return recovered;
     }
 
-    public String getSembuh() {
-        return sembuh;
-    }
-
-    public String getMeninggal() {
-        return meninggal;
-    }
-
-    public String getDirawat() {
-        return dirawat;
+    public String getDeaths() {
+        return deaths;
     }
 }
