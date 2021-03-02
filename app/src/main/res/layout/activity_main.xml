@@ -46,29 +46,17 @@
         android:padding="10dp"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp">
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingTop="10dp"-->
-<!--            android:text="Name"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtName"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content" />-->
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Positif"
+            android:text="Name"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtPositif"
+            android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -76,11 +64,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Sembuh"
+            android:text="Cases"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtSembuh"
+            android:id="@+id/txtCases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -88,90 +76,102 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Meninggal"
+            android:text="Deaths"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtMati"
+            android:id="@+id/txtDeaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingTop="10dp"-->
-<!--            android:text="Dirawat"-->
-<!--            android:textStyle="bold" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Recovered"
+            android:textStyle="bold" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/txtRawat"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content" />-->
+        <TextView
+            android:id="@+id/txtRecovered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Active"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:ignore="MissingConstraints">
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"-->
+<!--        tools:ignore="MissingConstraints">-->
 
-        <Spinner
-            android:id="@+id/listItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:padding="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></Spinner>
+<!--        <Spinner-->
+<!--            android:id="@+id/listItem"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:padding="15dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"></Spinner>-->
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/piechart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.PieChart>
+<!--        <com.github.mikephil.charting.charts.PieChart-->
+<!--            android:id="@+id/piechart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="75dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.PieChart>-->
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barchart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.BarChart>
+<!--        <com.github.mikephil.charting.charts.BarChart-->
+<!--            android:id="@+id/barchart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="75dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.BarChart>-->
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/linechart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.LineChart>
+<!--        <com.github.mikephil.charting.charts.LineChart-->
+<!--            android:id="@+id/linechart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="75dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/listItem"></com.github.mikephil.charting.charts.LineChart>-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
