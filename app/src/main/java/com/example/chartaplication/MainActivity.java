@@ -2,6 +2,7 @@ package com.example.chartaplication;
 
 import android.app.ProgressDialog;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +16,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -60,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
                     txtDeaths.setText(jsonObject.getString("deaths"));
                     txtRecovered.setText(jsonObject.getString("recovered"));
                     txtActive.setText(jsonObject.getString("active"));
+
+                    BarChart chart = findViewById(R.id.barchart);
+                    ArrayList Pembeli = new ArrayList();
+                    Pembeli.add(new BarEntry(0, ));
+                    Pembeli.add(new BarEntry(1, ));
+                    Pembeli.add(new BarEntry(2, ));
+                    Pembeli.add(new BarEntry(3, ));
+                    BarDataSet bardataset = new BarDataSet(Pembeli, "");
+                    bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+                    bardataset.setValueTextColor(Color.BLACK);
+                    bardataset.setValueTextSize(14f);
+
                     dialog.cancel();
                 } catch (JSONException e) {
                     e.printStackTrace();
