@@ -6,7 +6,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +22,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONException;
@@ -39,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtName = findViewById(R.id.txtName);
-        txtCases = findViewById(R.id.txtCases);
-        txtDeaths = findViewById(R.id.txtDeaths);
-        txtRecovered = findViewById(R.id.txtRecovered);
-        txtActive = findViewById(R.id.txtActive);
+//        txtName = findViewById(R.id.txtName);
+//        txtCases = findViewById(R.id.txtCases);
+//        txtDeaths = findViewById(R.id.txtDeaths);
+//        txtRecovered = findViewById(R.id.txtRecovered);
+//        txtActive = findViewById(R.id.txtActive);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
@@ -62,22 +71,27 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    txtName.setText(jsonObject.getString("country"));
-                    txtCases.setText(jsonObject.getString("cases"));
-                    txtDeaths.setText(jsonObject.getString("deaths"));
-                    txtRecovered.setText(jsonObject.getString("recovered"));
-                    txtActive.setText(jsonObject.getString("active"));
+//                    txtName.setText(jsonObject.getString("country"));
+//                    txtCases.setText(jsonObject.getString("cases"));
+//                    txtDeaths.setText(jsonObject.getString("deaths"));
+//                    txtRecovered.setText(jsonObject.getString("recovered"));
+//                    txtActive.setText(jsonObject.getString("active"));
 
-                    BarChart chart = findViewById(R.id.barchart);
-                    ArrayList Pembeli = new ArrayList();
-                    Pembeli.add(new BarEntry(0, ));
-                    Pembeli.add(new BarEntry(1, ));
-                    Pembeli.add(new BarEntry(2, ));
-                    Pembeli.add(new BarEntry(3, ));
-                    BarDataSet bardataset = new BarDataSet(Pembeli, "");
-                    bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-                    bardataset.setValueTextColor(Color.BLACK);
-                    bardataset.setValueTextSize(14f);
+                    PieChart pieChart = findViewById(R.id.piechart);
+                    ArrayList<PieEntry> Produser = new ArrayList<>();
+                    Produser.add(new PieEntry(Float.parseFloat(jsonObject.getString("cases")), "Kasus"));
+                    Produser.add(new PieEntry(Float.parseFloat(jsonObject.getString("deaths")), "Kematian"));
+                    Produser.add(new PieEntry(Float.parseFloat(jsonObject.getString("recovered")), "Sembuh"));
+                    Produser.add(new PieEntry(Float.parseFloat(jsonObject.getString("active")), "Aktif"));
+                    PieDataSet pieDataSet = new PieDataSet(Produser, "");
+                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                    pieDataSet.setValueTextColor(Color.BLACK);
+                    pieDataSet.setValueTextSize(14f);
+                    PieData pieData = new PieData(pieDataSet);
+                    pieChart.setData(pieData);
+                    pieChart.getDescription().setEnabled(false);
+                    pieChart.setCenterText("Info Covid");
+                    pieChart.animate();
 
                     dialog.cancel();
                 } catch (JSONException e) {
