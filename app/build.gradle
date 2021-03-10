@@ -29,8 +29,13 @@ android {
 }
 
 dependencies {
+    //Eazegraph
+    compile 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+
     //MPChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -38,6 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //Retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
 
