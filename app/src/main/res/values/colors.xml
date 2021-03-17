@@ -9,8 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#FF938C</color>
     <color name="tosca">#008F94</color>
+    <color name="abu">#dddddd</color>
     <color name="cases">#FFB259</color>
     <color name="deaths">#ff5959</color>
     <color name="recovered">#43d79b</color>
     <color name="active">#4db5ff</color>
+    <color name="unguhitam">#3B3047</color>
+    <color name="orange">#F99C5D</color>
 </resources>
